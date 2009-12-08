@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+var presleyRoot = __filename.replace(/[\\\/]bin[\\\/]presley$/, '');
+
+require(presleyRoot + '/ext/soda_compressed');
+
+soda.lib(presleyRoot + '/src', 'presley');
+
+soda.load(['presley_cli', 'node:sys'], function (cli, sys) {
+    cli.execute(process.ARGV, process.ENV);
+});
+
